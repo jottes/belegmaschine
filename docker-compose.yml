@@ -1,0 +1,33 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    container_name: ${DB_CONTAINER}
+    restart: on-failure
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: root
+      MYSQL_DATABASE: bm
+#    logging:
+#      driver: syslog
+#      options:
+#        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+    networks:
+      - backend
+    volumes:
+      - ${PWD}/mariadb:/var/lib/mysql
+
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - "8080:8080"
+
+networks:
+   backend:
+     driver: bridge
