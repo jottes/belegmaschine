@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
-public class BasisBelegService {
+@Service("klaraBasisService")
+public class BasisBelegService<T extends BasisBeleg> {
 
     BasisBelegRepository basisBelegRepository;
 

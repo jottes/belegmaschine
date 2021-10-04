@@ -1,5 +1,8 @@
 package de.convinceit.belegmaschine.model;
 
+import de.convinceit.belegmaschine.service.KlaraEntity;
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -8,7 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class BasisBeleg {
+@Data
+public class BasisBeleg extends KlaraEntity {
 
     @Id
     UUID id;
